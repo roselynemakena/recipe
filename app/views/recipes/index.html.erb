@@ -1,0 +1,51 @@
+<div class="pull-right">
+<%= link_to "Add a recipe",
+            new_recipe_path,
+            :class => 'btn btn-primary white' %>
+</div> 
+<hr>
+</br>
+<% if @recipes.count > 0 %>
+  <% @recipes.each do |recipe| %>
+   <div class="col-md-2 card border margin-10 shadow" style="width: 25rem;">
+     <div class="card-block">
+    <h4 class="card-title"><%= recipe.name %></h4>
+    <p class="card-text"><%= recipe.description %></p>
+    <hr>
+    <p><small class="muted">Created: <%= time_ago_in_words(recipe.created_at) %> ago.</small></p>
+    <p><small class="muted">Author: <%=  recipe.user.email || "Anonymus" %></small></p>
+    <hr>
+
+        <% if current_user and current_user.not_following_chef?(recipe.user_id) and current_user.id != recipe.user_id%>
+
+            <%= link_to '<i class="fa fa-eye"></i> View Profile'.html_safe, user_path(recipe.user_id), class: "btn btn-xs btn-default"%> 
+
+             <%= link_to '<i class="fa fa-star-o"></i> Follow Chef'.html_safe, add_friend_path(user: current_user,friend: recipe.user_id), method: :post, class: "btn btn-xs btn-default"%> 
+             <% elsif current_user.id == recipe.user_id %>
+                <p><i class="fa fa-star"></i> This is your recipe</p>
+             <% end %>
+        <% if current_user and current_user.can_add_recipe?(recipe.id)%>
+                <% if current_user.id != recipe.user_id %>
+              <%= link_to '<i class="fa fa-heart-o"></i> StartWatch'.html_safe, user_recipes_path(user_id: current_user,recipe_id: recipe.id), method: :post, class: "btn btn-default"%>
+
+              <% else %>
+
+              <% end %>
+          <% elsif current_user && current_user.id != recipe.user_id%>
+            <%= link_to '<i class="fa fa-heart"></i> Watching Recipe'.html_safe, recipe_path(recipe), class: "btn btn-xs btn-default"%>
+        <% end %>
+        <% if current_user.id == recipe.user_id %>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_recipe_path(recipe), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      recipe_path(recipe),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        <% end %>
+          </div>
+
+    </div>
+        <% end %>
+<% end %>
+

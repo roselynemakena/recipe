@@ -1,0 +1,23 @@
+<h2>My recipes</h2>
+
+
+<% @user_recipes.each do |user_recipe| %>
+<div class="col-md-3 card bord margin-10 shadow" style="width: 30rem;">
+  <div class="card-block">
+    <h4 class="card-title"><%= user_recipe.name %></h4>
+    <p class="card-text"><%= user_recipe.description %></p>
+    <div class="col-md-12">
+    				<%=link_to "<i class ='fa fa-heart'></i> Unwatch".html_safe,user_recipe_path(current_user, recipe_id: user_recipe.id), 
+    						class:"btn btn-default col-md-4 green", method: :delete , data: {confirm: "Sure?"}%> 
+    				<%= link_to "<i class = 'fa fa-share'></i> Share".html_safe, '#',
+    						class:"btn btn-default col-md-4 blue" %></div>
+    <% if current_user.id == @user.id%>
+    <%#= link_to "View this", recipe_path(recipe), class: "btn btn-primary" %>
+
+    <% else %>
+
+    <% end %>
+
+  </div>
+</div>
+<% end %>
