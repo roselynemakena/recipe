@@ -1,17 +1,18 @@
 Rails.application.routes.draw do
+  root 'welcome#index', as: '/'
+  
+devise_for :users, controllers: {registrations: "user/registrations"}
 
   namespace :api do
-    namespace :v1 do
-    resources :recipes
-   devise_for :users, controllers: {registrations: "user/registrations"}
-
-   end
+      namespace :v1 do
+        resources :recipes
+        mount_devise_token_auth_for 'User', at: 'auth'
+        # devise_for :users, controllers: {registrations: "user/registrations"}
+      end
   end
 
 
   resources :recipes
-  devise_for :users, controllers: {registrations: "user/registrations"}
-
   resources :user_recipes, except: [:show, :edit, :update]
 
   get 'welcome/index'
@@ -20,7 +21,6 @@ Rails.application.routes.draw do
   get 'my_friends', to: 'users#my_friends'
   post 'add_friend', to: 'users#add_friend'
 
-  root 'welcome#index', as: '/'
 
   resources :users, only: [:show]
   resources :friendships

@@ -1,5 +1,7 @@
 class Api::V1::RecipesController < Api::V1::ApiController
   before_action :set_recipe, only: [:show,:destroy]
+  
+  # skip_before_filter :authenticate_user!, only: [:index]
 
 def index
   @recipes = Recipe.all
@@ -7,6 +9,9 @@ def index
 end
 def show
   render json: @recipe
+end
+def new
+  
 end
 
 def create

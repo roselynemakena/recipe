@@ -1,9 +1,18 @@
 class User < ApplicationRecord
+  # Include default devise modules.
+  # devise :database_authenticatable, :registerable,
+  #         :recoverable, :rememberable, :trackable, :validatable,
+  #         :confirmable, :omniauthable
+  # include DeviseTokenAuth::Concerns::User
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+before_validation do
+self.uid = email if uid.blank?
+end
   validates_uniqueness_of :email
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :confirmable, :omniauthable
 
        has_many :user_recipes
        has_many :recipes,-> {distinct} ,through: :user_recipes

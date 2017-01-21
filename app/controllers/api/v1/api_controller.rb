@@ -4,9 +4,10 @@ module Api
      protect_from_forgery unless: -> { request.format.json? }
      protect_from_forgery with: :null_session
 
-     before_filter :authenticate_user_from_token!
-     before_filter :authenticate_user!
 
+     before_filter :authenticate_user_from_token!
+     # before_filter :authenticate_user!
+     include DeviseTokenAuth::Concerns::SetUserByToken
  
 
        private
