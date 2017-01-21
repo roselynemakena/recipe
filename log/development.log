@@ -43790,3 +43790,13 @@ Started POST "/__better_errors/7eb705e45e48a5b6/variables" for ::1 at 2017-01-21
             FROM sqlite_temp_master
             WHERE name='index_users_on_email' AND type='index'
 [0m
+Started GET "/users/sign_up" for ::1 at 2017-01-21 10:01:14 +0300
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from <class:RegistrationsController> at C:/Sites/RAILS/recipee/app/controllers/user/registrations_controller.rb:3)
+Processing by User::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.5ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (62.3ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+Completed 200 OK in 894ms (Views: 847.3ms | ActiveRecord: 8.0ms)
+
+
