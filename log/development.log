@@ -43800,3 +43800,118 @@ Processing by User::RegistrationsController#new as HTML
 Completed 200 OK in 894ms (Views: 847.3ms | ActiveRecord: 8.0ms)
 
 
+Started POST "/users" for ::1 at 2017-01-21 12:21:42 +0300
+Processing by User::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"in7srAILc3iIzmG3wbRmti+LWjCZoigb9tPjXl6Cfeng9enEEbspfTDJCRwJxY9KDA6fr53KqzQpl7jMzo8joQ==", "user"=>{"email"=>"roselynemakena@gmail.com", "first_name"=>"Roselyne", "last_name"=>"Muris", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Unpermitted parameters: first_name, last_name
+  [1m[35m (2.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "roselynemakena@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "roselynemakena@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (4.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (50.6ms)
+  Rendered layouts/_navigation.html.erb (4.0ms)
+Completed 200 OK in 1681ms (Views: 1041.8ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/recipes" for ::1 at 2017-01-21 12:21:53 +0300
+DEPRECATION WARNING: skip_before_filter is deprecated and will be removed in Rails 5.1. Use skip_before_action instead. (called from <class:RecipesController> at C:/Sites/RAILS/recipee/app/controllers/recipes_controller.rb:4)
+Processing by RecipesController#index as HTML
+  Rendering recipes/index.html.erb within layouts/application
+  [1m[35m (8.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "recipes"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "recipes"[0m
+  Rendered recipes/index.html.erb within layouts/application (16.5ms)
+  Rendered layouts/_navigation.html.erb (2.0ms)
+Completed 200 OK in 412ms (Views: 328.6ms | ActiveRecord: 8.5ms)
+
+
+Started GET "/recipes/new" for ::1 at 2017-01-21 12:21:56 +0300
+Processing by RecipesController#new as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-01-21 12:21:56 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (3.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (21.1ms)
+  Rendered layouts/_navigation.html.erb (2.0ms)
+Completed 200 OK in 443ms (Views: 440.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2017-01-21 12:22:03 +0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9eLyo/j+jrsCDBslZi8dMRnUrhcuY2AJDcWPP+yEHE+6EqIfDlaTaauYIBrvW1I5CGxHjr1Cu/5WmlrcbB4ObQ==", "user"=>{"email"=>"roselynemakena@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "roselynemakena@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 401 Unauthorized in 328ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-01-21 12:22:03 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (17.5ms)
+  Rendered layouts/_navigation.html.erb (2.0ms)
+Completed 200 OK in 407ms (Views: 405.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/confirmation/new" for ::1 at 2017-01-21 12:22:40 +0300
+Processing by Devise::ConfirmationsController#new as HTML
+  Rendering devise/confirmations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.5ms)
+  Rendered devise/confirmations/new.html.erb within layouts/application (17.6ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+Completed 200 OK in 449ms (Views: 378.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/confirmation?confirmation_token=9eLyo/j+jrsCDBslZi8dMRnUrhcuY2AJDcWPP+yEHE+6EqIfDlaTaauYIBrvW1I5CGxHjr1Cu/5WmlrcbB4ObQ==" for ::1 at 2017-01-21 12:23:02 +0300
+Processing by Devise::ConfirmationsController#show as HTML
+  Parameters: {"confirmation_token"=>"9eLyo/j jrsCDBslZi8dMRnUrhcuY2AJDcWPP yEHE 6EqIfDlaTaauYIBrvW1I5CGxHjr1Cu/5WmlrcbB4ObQ=="}
+  [1m[36mUser Load (98.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."confirmation_token" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["confirmation_token", "9eLyo/j jrsCDBslZi8dMRnUrhcuY2AJDcWPP yEHE 6EqIfDlaTaauYIBrvW1I5CGxHjr1Cu/5WmlrcbB4ObQ=="], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."confirmation_token" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["confirmation_token", "d7c1a2ec871aad98b22e35d0061a7fcfac70075875bb06f78f2134ae83b0fe63"], ["LIMIT", 1]]
+  Rendering devise/confirmations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.5ms)
+  Rendered devise/confirmations/new.html.erb within layouts/application (14.0ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+Completed 200 OK in 651ms (Views: 309.3ms | ActiveRecord: 98.8ms)
+
+
+Started GET "/users/confirmation?confirmation_token=9eLyo/j+jrsCDBslZi8dMRnUrhcuY2AJDcWPP+yEHE+6EqIfDlaTaauYIBrvW1I5CGxHjr1Cu/5WmlrcbB4ObQ==" for ::1 at 2017-01-21 12:23:40 +0300
+Processing by Devise::ConfirmationsController#show as HTML
+  Parameters: {"confirmation_token"=>"9eLyo/j jrsCDBslZi8dMRnUrhcuY2AJDcWPP yEHE 6EqIfDlaTaauYIBrvW1I5CGxHjr1Cu/5WmlrcbB4ObQ=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."confirmation_token" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["confirmation_token", "9eLyo/j jrsCDBslZi8dMRnUrhcuY2AJDcWPP yEHE 6EqIfDlaTaauYIBrvW1I5CGxHjr1Cu/5WmlrcbB4ObQ=="], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."confirmation_token" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["confirmation_token", "d7c1a2ec871aad98b22e35d0061a7fcfac70075875bb06f78f2134ae83b0fe63"], ["LIMIT", 1]]
+  Rendering devise/confirmations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/confirmations/new.html.erb within layouts/application (14.0ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+Completed 200 OK in 368ms (Views: 356.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/confirmation?confirmation_token=9eLyo/j%20jrsCDBslZi8dMRnUrhcuY2AJDcWPP%20yEHE%206EqIfDlaTaauYIBrvW1I5CGxHjr1Cu/5WmlrcbB4ObQ==" for ::1 at 2017-01-21 12:24:09 +0300
+Processing by Devise::ConfirmationsController#show as HTML
+  Parameters: {"confirmation_token"=>"9eLyo/j jrsCDBslZi8dMRnUrhcuY2AJDcWPP yEHE 6EqIfDlaTaauYIBrvW1I5CGxHjr1Cu/5WmlrcbB4ObQ=="}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."confirmation_token" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["confirmation_token", "9eLyo/j jrsCDBslZi8dMRnUrhcuY2AJDcWPP yEHE 6EqIfDlaTaauYIBrvW1I5CGxHjr1Cu/5WmlrcbB4ObQ=="], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."confirmation_token" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["confirmation_token", "d7c1a2ec871aad98b22e35d0061a7fcfac70075875bb06f78f2134ae83b0fe63"], ["LIMIT", 1]]
+  Rendering devise/confirmations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.5ms)
+  Rendered devise/confirmations/new.html.erb within layouts/application (17.5ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+Completed 200 OK in 392ms (Views: 383.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/confirmation?confirmation_token=9eLyo/j%20jrsCDBslZi8dMRnUrhcuY2AJDcWPP%20yEHE%206EqIfDlaTaauYIBrvW1I5CGxHjr1Cu/5WmlrcbB4ObQ==" for ::1 at 2017-01-21 12:24:31 +0300
+Processing by Devise::ConfirmationsController#show as HTML
+  Parameters: {"confirmation_token"=>"9eLyo/j jrsCDBslZi8dMRnUrhcuY2AJDcWPP yEHE 6EqIfDlaTaauYIBrvW1I5CGxHjr1Cu/5WmlrcbB4ObQ=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."confirmation_token" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["confirmation_token", "9eLyo/j jrsCDBslZi8dMRnUrhcuY2AJDcWPP yEHE 6EqIfDlaTaauYIBrvW1I5CGxHjr1Cu/5WmlrcbB4ObQ=="], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."confirmation_token" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["confirmation_token", "d7c1a2ec871aad98b22e35d0061a7fcfac70075875bb06f78f2134ae83b0fe63"], ["LIMIT", 1]]
+  Rendering devise/confirmations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.0ms)
+  Rendered devise/confirmations/new.html.erb within layouts/application (17.0ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+Completed 200 OK in 438ms (Views: 430.4ms | ActiveRecord: 1.0ms)
+
+
