@@ -2,8 +2,16 @@
 border: 1px solid #2E4053;
 border-radius: 10px;
 }
+.recipe-user-actions {
+    text-align: right;
+}.no-bullets {
+    list-style: none;
+}
 .no-padding{
 	padding: 0px !important;
+}
+.no-margin {
+    margin: 0px !important;
 }
 .left-padding {
 	padding-left: 15px !important;

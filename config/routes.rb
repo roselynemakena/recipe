@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
     resources :recipes
+   devise_for :users, controllers: {registrations: "user/registrations"}
+
    end
   end
 
@@ -14,6 +16,7 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
   get 'my_recipes', to: 'users#my_recipes'
+  get 'saved_recipes', to: 'users#saved_recipes'
   get 'my_friends', to: 'users#my_friends'
   post 'add_friend', to: 'users#add_friend'
 

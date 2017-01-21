@@ -1,10 +1,16 @@
 class UsersController <ApplicationController
+	# before_filter :set_user
 
 def my_recipes
 	@user = current_user
-	@user_recipes = current_user.recipes
+	@user_recipes = Recipe.where(user_id: current_user.id).paginate(page: params[:page], per_page: 9)
 	
 end
+    def saved_recipes
+    	@user = current_user
+    @user_saved_recipes = current_user.recipes.paginate(page: params[:page], per_page: 9)
+    # render plain: @user_recipes
+  end
 
 	def show
 	@friend = User.find(params[:id])
@@ -28,5 +34,10 @@ end
 		end
 	end
 
+private
+def set_user
+	@user = User.find(params[:id])
+	
+end
 
 end

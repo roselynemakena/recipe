@@ -14,10 +14,9 @@
             <% else %>
           <ul class="nav navbar-nav">
             <li><%= link_to "Recipes Feed", recipes_path  %></li>
-            <li><%= link_to "Saved recipes", my_recipes_path  %></li>
+            <li><%= link_to "My basket", saved_recipes_path  %></li>
             <li><%= link_to "My friends", my_friends_path  %></li>
-            <li><%= link_to "My friends", my_friends_path  %></li>
-            <li><%= link_to "My profile", edit_user_registration_path(current_user)  %></li>
+            <li><%#= link_to "My profile", edit_user_registration_path(current_user)  %></li>
           </ul>
           <% end %>
       <ul class="nav navbar-nav navbar-right">

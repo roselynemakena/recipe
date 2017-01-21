@@ -1,23 +1,45 @@
 <h2>My recipes</h2>
-
-
-<% @user_recipes.each do |user_recipe| %>
-<div class="col-md-3 card bord margin-10 shadow" style="width: 30rem;">
-  <div class="card-block">
-    <h4 class="card-title"><%= user_recipe.name %></h4>
-    <p class="card-text"><%= user_recipe.description %></p>
-    <div class="col-md-12">
-    				<%=link_to "<i class ='fa fa-heart'></i> Unwatch".html_safe,user_recipe_path(current_user, recipe_id: user_recipe.id), 
-    						class:"btn btn-default col-md-4 green", method: :delete , data: {confirm: "Sure?"}%> 
-    				<%= link_to "<i class = 'fa fa-share'></i> Share".html_safe, '#',
-    						class:"btn btn-default col-md-4 blue" %></div>
-    <% if current_user.id == @user.id%>
-    <%#= link_to "View this", recipe_path(recipe), class: "btn btn-primary" %>
-
-    <% else %>
-
-    <% end %>
-
-  </div>
+<div class="pull-right">
+    <%= link_to " Recipes", recipes_path, class: "btn btn-lg btn-default"  %>
 </div>
+
+<%= render 'recipes/actions'%>
+
+<div align="center">
+<%= will_paginate @user_recipes%>
+</div>
+<%if @user_recipes%>
+
+    <% @user_recipes.each do |user_recipe| %>
+    <div class="col-md-3 card bord margin-10 shadow" style="width: 26rem;">
+      <div class="card-block">
+        <h4 class="card-title"><%= user_recipe.name %></h4>
+        <p class="card-text"><%= user_recipe.description %></p>
+        <% if current_user and current_user.id == user_recipe.user_id %>
+
+        <div class="col-md-12">
+        				<%= link_to "<i class = 'fa fa-share'></i> Share".html_safe, '#',
+        						class:"btn btn-xs btn-default col-md-4 blue" %>
+        <div class="recipe-user-actions">
+          <%= link_to "Editt",edit_recipe_path(user_recipe), :class => 'btn btn-primary btn-xs' %>
+          <%= link_to "Delete",
+                      recipe_path(user_recipe),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+                      
+        </div>
+        </div>
+
+        <% end %>
+
+      </div>
+    </div>
+        <% end %>
+<% else %>
+<p class="lead">No recipes</p>
+
 <% end %>
+<div align="center">
+<%= will_paginate @user_recipes %>
+</div>

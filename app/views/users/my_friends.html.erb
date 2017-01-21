@@ -7,9 +7,19 @@
   <div class="card-block">
     <h4 class="card-title"><%= friend.email %></h4>
     <p class="card-text"><%= friend.first_name%></p>
-    <p class="card-text"><%= friend.last_name%></p>
-    <p class="card-text"><%= friend.id%></p>
-    <p class="card-text"><%= current_user.id%></p>
+    <ul class="no-padding">
+
+    <p class="no-margin no-padding">Recipes following</p>
+    <hr class="no-padding no-margin">
+
+    <% if friend.recipes%>
+        <% friend.recipes.each do |recipe|%>
+        <li class="col-md-3 no-bullets"><%=link_to "<i class='fa fa-star'></i> #{recipe.name}".html_safe, recipe_path(recipe),class: "label label-default"%></li>
+        <% end %>
+    <% else%>
+
+    <% end %>
+    </ul>
     <div class="col-md-12">
     <hr>
 

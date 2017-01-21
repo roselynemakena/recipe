@@ -1,0 +1,37 @@
+<h2>My recipes</h2>
+
+<%= render 'recipes/actions'%>
+
+
+<div align="center">
+<%= will_paginate @user_saved_recipes %>
+</div>
+<%if @user_saved_recipes%>
+
+    <% @user_saved_recipes.each do |user_recipe| %>
+    <div class="col-xs-3 card bord margin-10 shadow" style="width: 27rem;">
+      <div class="card-block">
+        <h4 class="card-title"><%= user_recipe.name %></h4>
+        <p class="card-text"><%= user_recipe.description %></p>
+        <div class="col-md-12">
+                <%=link_to "<i class ='fa fa-heart'></i> Unwatch".html_safe,user_recipe_path(current_user, recipe_id: user_recipe.id), 
+                    class:"btn btn-xs btn-default col-md-4 red", method: :delete , data: {confirm: "Sure?"}%> 
+                <%= link_to "<i class = 'fa fa-share'></i> Share".html_safe, '#',
+                    class:"btn btn-xs btn-default col-md-4 blue" %></div>
+        <% if current_user and current_user.id == @user.id%>
+        <%#= link_to "View this", recipe_path(recipe), class: "btn btn-primary" %>
+
+        <% else %>
+
+        <% end %>
+
+      </div>
+    </div>
+        <% end %>
+<% else %>
+<p class="lead">No recipes</p>
+
+<% end %>
+<div align="center">
+<%= will_paginate @user_saved_recipes %>
+</div>
