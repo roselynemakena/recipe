@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   namespace :api do
       namespace :v1 do
         resources :recipes
-        mount_devise_token_auth_for 'User', at: 'auth', controllers: {registrations: "api/v1/registrations"}
+        mount_devise_token_auth_for 'User', at: 'auth'
         # devise_for :users, controllers: {registrations: "user/registrations"}
       end
   end
