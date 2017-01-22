@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  root 'welcome#index', as: '/'
+  root 'welcome#index', as: 'home'
   
-devise_for :users, controllers: {registrations: "user/registrations"}
 
   namespace :api do
       namespace :v1 do
@@ -10,6 +9,7 @@ devise_for :users, controllers: {registrations: "user/registrations"}
         # devise_for :users, controllers: {registrations: "user/registrations"}
       end
   end
+devise_for :users, controllers: {registrations: "user/registrations"}
 
 
   resources :recipes
