@@ -10,14 +10,17 @@
 </div>
 <% if @recipes.count > 0 %>
   <% @recipes.each do |recipe|%>
-   <% if recipe.user_id != current_user.id %>
+   <% if recipe.user_id != if defined? current_user.id  then current_user end %>
    <div class="col-xs-3 card border margin-10 shadow" style="width: 25rem;">
      <div class="card-block">
     <h4 class="card-title"><%= recipe.name %></h4>
-    <p class="card-text"><%= recipe.description %></p>
+    <p class="card-text" style="min-height: 125px;"><%= recipe.description.truncate_words(30) %></p>
     <hr class="no-padding">
+    <p class="no-padding"><small class="muted">Steps: </small></p>
+    <hr class="no-padding">
+
     <p class="no-padding no-margin"><small class="muted">Created: <%= time_ago_in_words(recipe.created_at) %> ago.</small></p>
-    <p class="no-padding no-margin"><small class="muted">Author: <%=  recipe.user.email || "Anonymus" %></small></p>
+    <p class="no-padding no-margin"><small class="muted">Author: <%=  recipe.user.full_name || "Anonymus" %></small></p>
     <hr>
 
         <% if current_user and current_user.not_following_chef?(recipe.user_id) and current_user.id != recipe.user_id%>

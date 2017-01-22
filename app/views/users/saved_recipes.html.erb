@@ -12,7 +12,7 @@
     <div class="col-xs-3 card bord margin-10 shadow" style="width: 27rem;">
       <div class="card-block">
         <h4 class="card-title"><%= user_recipe.name %></h4>
-        <p class="card-text"><%= user_recipe.description %></p>
+        <p class="card-text"><%= user_recipe.description.truncate_words(70) %></p>
         <div class="col-md-12">
                 <%=link_to "<i class ='fa fa-heart'></i> Unwatch".html_safe,user_recipe_path(current_user, recipe_id: user_recipe.id), 
                     class:"btn btn-xs btn-default col-md-4 red", method: :delete , data: {confirm: "Sure?"}%> 
