@@ -43915,3 +43915,12 @@ Processing by Devise::ConfirmationsController#show as HTML
 Completed 200 OK in 438ms (Views: 430.4ms | ActiveRecord: 1.0ms)
 
 
+Started GET "/users/sign_up" for ::1 at 2017-01-21 16:10:56 +0300
+Processing by User::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (5.5ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (97.3ms)
+  Rendered layouts/_navigation.html.erb (3.0ms)
+Completed 200 OK in 1234ms (Views: 1193.2ms | ActiveRecord: 0.0ms)
+
+
