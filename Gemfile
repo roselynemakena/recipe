@@ -38,7 +38,7 @@ gem 'devise_token_auth'
 
 gem 'omniauth'
 
-  gem 'fog'
+gem 'fog'
 
 
 group :development, :test do
