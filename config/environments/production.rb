@@ -14,7 +14,7 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = {:host => 'https://recipeez.herokuapp.com/', :protocol => 'https'}
+  config.action_mailer.default_url_options = {:host => 'recipeez.herokuapp.com', :protocol => 'https'}
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
