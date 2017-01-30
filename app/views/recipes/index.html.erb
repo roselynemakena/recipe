@@ -16,6 +16,17 @@
     <h4 class="card-title"><%= recipe.name %></h4>
     <p class="card-text" style="min-height: 125px;"><%= recipe.description.truncate_words(30) %></p>
     <hr class="no-padding">
+    <% if recipe.items.any? %>
+         <p class="no-padding no-margin ">
+         <small class="muted col-md-12">Items: 
+
+           <%= render recipe.items %>
+         </small></p>
+         <hr class="no-padding">
+        <% end %>
+
+        
+        <hr class="no-padding">
     <p class="no-padding"><small class="muted">Steps: </small></p>
     <hr class="no-padding">
 
