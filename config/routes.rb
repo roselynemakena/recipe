@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
   root 'welcome#index', as: 'home'
   
 
@@ -13,6 +15,8 @@ devise_for :users, controllers: {registrations: "user/registrations"}
 
 
   resources :recipes
+  resources :items
+  resources :categories, except: [:destroy]
   resources :user_recipes, except: [:show, :edit, :update]
 
   get 'welcome/index'

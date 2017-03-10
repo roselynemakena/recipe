@@ -19,15 +19,31 @@
     <%= f.label :name, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
       <%= f.text_field :name, :class => 'form-control' %>
-    </div>
     <%=f.error_span(:name) %>
+
+    </div>
   </div>
   <div class="form-group">
     <%= f.label :description, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
       <%= f.text_area :description, :class => 'form-control' %>
-    </div>
     <%=f.error_span(:description) %>
+
+    </div>
+  </div>
+    <div class="form-group">
+    <div class="col-lg-12 col-lg-offset-2">
+            <%= f.collection_check_boxes :item_ids, Item.all, :id, :name do |cb| %>
+            <%= cb.label(class: "checkbox-inline input_checkbox"){cb.check_box(class: "checkbox")+cb.text}%>
+            <% end %>
+    </div>
+
+    <p class="lead">OR</p>
+    <p>Add your own items</p>
+      <div class="col-lg-10">
+      <%= link_to "Add Recipe Items", new_item_path, class: 'btn btn-lg btn-primary' %>
+      <%# f.text_field :item, :class => 'form-control' %>
+    </div>
   </div>
 
   <div class="form-group">
